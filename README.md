@@ -125,4 +125,4 @@ Exit-interview text analysis, hire and exit dates for survival analysis, manager
 IBM HR Analytics Employee Attrition & Performance dataset, available on [Kaggle](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset). It is a fictional dataset created by IBM data scientists.
 
 ## Author
-*Your name* · *LinkedIn* · *Email*
+*Krishna Sri Bodduri* ·
