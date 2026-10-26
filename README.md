@@ -110,17 +110,6 @@ hr-attrition-analysis/
 
 ---
 
-## Limitations
-
-- **Association, not causation.** The data is observational; nothing here proves that overtime (or anything else) *causes* people to leave.
-- **Fictional dataset.** The IBM HR Analytics dataset is a publicly available fictional dataset, so the findings illustrate the method rather than describe a real company.
-- **No dates.** Without hire or exit dates, true attrition trends over time cannot be analysed, so tenure bands are used instead of a time trend.
-- **Risk factors were chosen after exploring this data**, so the stacking results are descriptive, not an out-of-sample prediction. The regression is likewise in-sample.
-- **Ethics.** Marital status identifies who is at higher risk in this data but is a protected characteristic in many jurisdictions and should not be used for individual employment decisions.
-
-## Possible next steps
-Exit-interview text analysis, hire and exit dates for survival analysis, manager and team effects, the financial cost of attrition by role, and a held-out validation of any predictive model.
-
 ## Data source
 IBM HR Analytics Employee Attrition & Performance dataset, available on [Kaggle](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset). It is a fictional dataset created by IBM data scientists.
 
