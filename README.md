@@ -77,38 +77,39 @@ Overtime Attrition Gap = [Attrition Rate (OverTime)] - [Attrition Rate (No OverT
 Segment Lift = DIVIDE([Segment Attrition Rate], CALCULATE([Attrition Rate], ALL(EmployeeFact)))
 ```
 
----
-
 ## Repository structure
 
 ```
 hr-attrition-analysis/
 ├── data/
-│   ├── raw/                  original dataset (untouched)
-│   ├── cleaned/              employees_clean.csv (output of the SQL cleaning script)
-│   └── hr_attrition.db       SQLite database (employees_raw, employees_clean)
+│   ├── HR-Employee-Attrition.csv    original dataset (untouched)
+│   └── employees_clean.csv          output of the SQL cleaning script (1,470 rows, 36 columns)
 ├── sql/
-│   ├── 01_clean_data.sql             cleaning + derived columns
-│   └── 02_exploratory_analysis.sql   KPIs, medians, cross-tabs, high-risk segments
-├── excel/                    pivot-table workbook used to cross-validate SQL results
+│   ├── 01_clean_data.sql            cleaning + derived columns (AgeBand, TenureBand, SalaryBand, AttritionFlag)
+│   ├── 02_exploratory_analysis.sql  KPIs, medians, cross-tabs, high-risk segments
+│   ├── hr_attrition.db              SQLite database (tables: employees_raw, employees_clean)
+│   └── hr_attrition.sqbpro          DB Browser for SQLite project file
+├── excel/
+│   └── EmployeeData.xlsx            pivot tables used to cross-validate the SQL results
 ├── notebooks/
 │   └── 03_statistical_analysis.ipynb  hypothesis tests and regression
-├── powerbi/                  .pbix file + PDF export of the dashboard
+├── powerbi/
+│   ├── HR_Attrition Analysis.pbix   Power BI dashboard (4 pages)
+│   └── HR_Attrition Analysis.pdf    PDF export of the dashboard
 ├── docs/
 │   ├── data_dictionary.md
 │   └── insights_summary.md
-├── screenshots/
+├── screenshots/                     dashboard page images used in this README
+├── LICENSE
 ├── requirements.txt
 └── README.md
 ```
 
 ## How to reproduce
 
-1. **SQL:** open `data/hr_attrition.db` in [DB Browser for SQLite](https://sqlitebrowser.org/), or run `sql/01_clean_data.sql` then `sql/02_exploratory_analysis.sql` against the raw table.
-2. **Statistics:** `pip install -r requirements.txt`, then open `notebooks/03_statistical_analysis.ipynb` in Jupyter. It reads `data/cleaned/employees_clean.csv`.
-3. **Dashboard:** open the `.pbix` in Power BI Desktop. If it reports a missing source, go to *Transform data → Data source settings* and point it at `data/cleaned/employees_clean.csv`.
-
----
+1. **SQL:** open `sql/hr_attrition.db` in [DB Browser for SQLite](https://sqlitebrowser.org/) (it contains `employees_raw` and `employees_clean`), or load `data/HR-Employee-Attrition.csv` into a SQLite table named `employees_raw` and run `sql/01_clean_data.sql` followed by `sql/02_exploratory_analysis.sql`.
+2. **Statistics:** run `pip install -r requirements.txt`, then open `notebooks/03_statistical_analysis.ipynb` in Jupyter (launch Jupyter from the repo root or from `notebooks/`). The notebook reads `data/employees_clean.csv`.
+3. **Dashboard:** open `powerbi/HR_Attrition Analysis.pbix` in Power BI Desktop. If it reports a missing source, go to *Transform data → Data source settings* and point it at `data/employees_clean.csv`. The PDF in the same folder shows all four pages without needing Power BI.
 
 ## Data source
 IBM HR Analytics Employee Attrition & Performance dataset, available on [Kaggle](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset). It is a fictional dataset created by IBM data scientists.
